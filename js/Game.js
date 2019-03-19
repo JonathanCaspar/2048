@@ -1,7 +1,8 @@
 var arrowKey = {37 : "left", 38 : "up", 39 : "right", 40 : "down"};
 class Game {
-	constructor(size, view) {
-		this.size = size;
+	constructor(size = 4, view) {
+		if(size < 3) this.size = 4;
+		else this.size = size;
 		this.view = view;
 		this.winMessage = this.view.getElementById("win-message");
 		this.gameOverMessage = this.view.getElementById("game-over-message");
@@ -24,7 +25,7 @@ class Game {
 		gridHTML.style.gridTemplateRows 	= 'repeat(' + this.size + ',100px)';
     	gridHTML.style.gridTemplateColumns = 'repeat(' + this.size + ',100px)';
 
-    	//Génération des tuiles vides à afficher
+    	//Génération des tuiles vides à afficher (HTML)
 		for (var i = 0; i < this.size*this.size; i++) {
 			let tile = document.createElement('div');
 			tile.setAttribute('class', 'tile');
@@ -59,6 +60,7 @@ class Game {
 		return this.grid[x][y];
 	}
 
+	// Retourne la tuile situé à 'direction' de la tuile (x, y)
 	getNearTile(x, y, direction){
 		switch(direction){
 			case 'left':
@@ -98,51 +100,6 @@ class Game {
 
 			this.setTile(x, y, randomValue);
 		}
-	}
-
-	resetMergeStatus(){
-		for (var i = 0; i < this.grid.length; i++) {
-			for (var j = 0; j < this.grid[i].length; j++) {
-				let tile = this.grid[i][j];
-
-				if(tile != undefined){
-					tile.merged = false;
-				}
-			}
-		}
-	}
-
-	shiftAndMergeFrom(x, y, direction, gameOverCheck = false){
-		var tile 	 = this.getTile(x, y);
-		var nearTile = this.getNearTile(x, y, direction);
-
-		if(tile.val != undefined){ // Tuile avec valeur à déplacer ?
-
-			while(nearTile != undefined){
-				if(nearTile.val == undefined){
-					this.setTile(nearTile.x, nearTile.y, tile.val);
-					this.removeTile(tile.x, tile.y);
-				}
-				else if(tile.val == nearTile.val){ // merging
-					if(!(tile.merged || nearTile.merged)){
-						let mergedVal = tile.val*2;
-						if(mergedVal > this.highestTile && !gameOverCheck) {
-							this.highestTile = mergedVal;
-							if(mergedVal >= this.WIN_VALUE) this.gameStatus = 'win';
-						}
-
-						this.setTile(nearTile.x, nearTile.y, mergedVal, true);
-						this.removeTile(tile.x, tile.y);
-					}
-				}
-				
-				 //efface la tuile actuelle
-				tile = nearTile;
-				nearTile = this.getNearTile(tile.x, tile.y, direction);
-			}
-		}
-
-		this.resetMergeStatus();
 	}
 	
 	move(direction, gameOverCheck = false) {
@@ -192,6 +149,51 @@ class Game {
 		}
 	}
 
+	shiftAndMergeFrom(x, y, direction, gameOverCheck = false){
+		var tile 	 = this.getTile(x, y);
+		var nearTile = this.getNearTile(x, y, direction);
+
+		if(tile.val != undefined){ // Tuile avec valeur à déplacer ?
+
+			while(nearTile != undefined){
+				if(nearTile.val == undefined){
+					this.setTile(nearTile.x, nearTile.y, tile.val);
+					this.removeTile(tile.x, tile.y);
+				}
+				else if(tile.val == nearTile.val){ // merging
+					if(!(tile.merged || nearTile.merged)){
+						let mergedVal = tile.val*2;
+						if(mergedVal > this.highestTile && !gameOverCheck) {
+							this.highestTile = mergedVal;
+							if(mergedVal >= this.WIN_VALUE) this.gameStatus = 'win';
+						}
+
+						this.setTile(nearTile.x, nearTile.y, mergedVal, true);
+						this.removeTile(tile.x, tile.y);
+					}
+				}
+				
+				 //efface la tuile actuelle
+				tile = nearTile;
+				nearTile = this.getNearTile(tile.x, tile.y, direction);
+			}
+		}
+
+		this.resetMergeStatus();
+	}
+
+	resetMergeStatus(){
+		for (var i = 0; i < this.grid.length; i++) {
+			for (var j = 0; j < this.grid[i].length; j++) {
+				let tile = this.grid[i][j];
+
+				if(tile != undefined){
+					tile.merged = false;
+				}
+			}
+		}
+	}
+
 	isGameOver(){
 		var directions = ['left', 'up', 'right', 'down'];
 		var initialGrid = _.cloneDeep(this.grid); //sauvegarde la configuration initiale
@@ -211,12 +213,12 @@ class Game {
 		return isOver;
 	}
 
-	// Vues
+	// ----- Vues -----
 	updateView() {
-		var tiles = this.view.getElementsByClassName('tile');
-		var nbMovements = this.view.getElementById('movement-counter');
+		var tilesView = this.view.getElementsByClassName('tile');
+		var moveCountView = this.view.getElementById('movement-counter');
 
-		// Mise à jour des tuiles
+		// Mise à jour des tuiles en fonction du modèle 'grid'
 		for (var i = 0; i < this.grid.length; i++) {
 			for (var j = 0; j < this.grid[i].length; j++) {
 				let tile = this.getTile(i, j);
@@ -224,19 +226,16 @@ class Game {
 
 				// Case vide
 				if(tile.val == undefined){
-					tiles[tilePosition].setAttribute('class', 'tile');
-					tiles[tilePosition].innerHTML = '';
+					tilesView[tilePosition].setAttribute('class', 'tile');
+					tilesView[tilePosition].innerHTML = '';
 				}
 				// Case avec valeur
 				else{
-					tiles[tilePosition].setAttribute('class', 'tile tile-' + tile.val);
-					tiles[tilePosition].innerHTML = '<span>' + tile.val + '</span>';
+					tilesView[tilePosition].setAttribute('class', 'tile tile-' + tile.val);
+					tilesView[tilePosition].innerHTML = '<span>' + tile.val + '</span>';
 				}
 			}
 		}
-
-		// Mise à jour du compteur
-		nbMovements.innerHTML = this.movementCount;
 
 		// Après update de l'affichage: vérifier si le jeu n'est pas terminé
 		if(this.gameStatus == 'win') { // option 1 : 2048 atteint
@@ -244,6 +243,10 @@ class Game {
 		}
 		else if(this.isGameOver()){ // option 2 : aucun mouvement possible
 			this.showHideGameOverMessage();
+		}
+		else{
+			// Mise à jour du compteur
+			moveCountView.innerHTML = this.movementCount;
 		}
 	}
 
@@ -278,7 +281,7 @@ class Game {
 		if(winMessage != undefined){
 			if(display){
 				winMessage.style.display = 'flex';
-				this.view.getElementById('win-movements').innerHTML = this.movementCount;
+				this.view.getElementById('win-movements').innerHTML = (this.movementCount - 1);
 			}
 			else{
 				winMessage.style.display = 'none';
@@ -292,7 +295,7 @@ class Game {
 			if(display){
 				gameOverMessage.style.display = 'flex';
 
-				this.view.getElementById('lose-movements').innerHTML = this.movementCount;
+				this.view.getElementById('lose-movements').innerHTML = (this.movementCount - 1);
 				this.view.getElementById('lose-max-tile').innerHTML = this.highestTile;
 
 			}
