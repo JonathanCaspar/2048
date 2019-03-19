@@ -125,7 +125,7 @@ Liens vers le code source :
 <div class="presentation-box">
 
 \
-**Le jeu 2048 est disponible à cette [adresse](https://p1129743.github.io/IFT3225-2048/).**
+**Le jeu 2048 est disponible à cette [adresse](https://jonathancaspar.github.io/IFT3225-2048/).**
 
 \
 Le projet est organisée de la manière suivante:
