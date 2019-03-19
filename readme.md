@@ -7,11 +7,11 @@ Rapport TP2 - Technologie de l'Internet
 
 <div id="infos">
 
-[Nom: ]{.bold}Jonathan Caspar
+**Nom:** Jonathan Caspar
 
-[Matricule: ]{.bold}20059041
+**Matricule:** 20059041
 
-[Courriel: ]{.bold}jonathan.caspar@umontreal.ca
+**Courriel:** jonathan.caspar@umontreal.ca
 
 </div>
 
@@ -29,26 +29,26 @@ notamment pour les couleurs utilisées.
 <div>
 
 J'ai fait le choix d'afficher la grille de jeu dans un élement
-[table]{.bold} avec une largeur/hauteur de cases fixée à [100px]{.bold}.
+**table** avec une largeur/hauteur de cases fixée à **100px**.
 
-Le pattern qui définit le nombre de lignes/colonnes de [table]{.bold}
+Le pattern qui définit le nombre de lignes/colonnes de **table**
 est défini en Javascript (Game.js) en fonction de la taille de grille
-fourni en paramètres lors de l'instanciation de [Game]{.bold}.
+fourni en paramètres lors de l'instanciation de **Game**.
 
 La valeur des tuiles est représentée au travers des classes auxquelles
 elles sont associées pour facilement adapter l'affichage des tuiles en
-CSS. Toutes les tuiles sont de classe CSS [tile]{.bold}. Si elles
+CSS. Toutes les tuiles sont de classe CSS **tile**. Si elles
 n'appartiennent à aucune autre classe CSS, elles sont considérées comme
-[vides]{.bold}.\
-Auquel cas, elles sont aussi de classes CSS [tile-X]{.bold} (avec
-[X]{.bold} = la valeur de la tuile).
+**vides**.\
+Auquel cas, elles sont aussi de classes CSS **tile-X** (avec
+**X** = la valeur de la tuile).
 
-De plus, la [vue]{.bold} a été séparée du [modèle]{.bold} : le script
+De plus, la **vue** a été séparée du **modèle** : le script
 Javascript (Game.js) utilise une représentation interne sous forme de
 tableau bi-dimensionnel (contenant des objets Tile) pour calculer et
 stocker les données liées aux tuiles.
 
-Un objet Tile possède notamment un attribut [merged]{.bold} qui définit
+Un objet Tile possède notamment un attribut **merged** qui définit
 si celui ci a récemment été créée à la suite d'une fusion entre deux
 autres Tile.
 
@@ -68,15 +68,15 @@ donner]{} ![\[8\]\[8\]\[ \]\[ \]](img/8tiles.png){.merging-tiles} [et
 non]{} ![\[16\]\[ \]\[ \]\[ \]](img/16tiles.png){.merging-tiles}.
 
 Lorsque les calculs sont terminées, on fait appel à
-[updateView()]{.bold} pour mettre à jour la vue (i.e.
-[\#game-container]{.bold})
+[updateView()** pour mettre à jour la vue (i.e.
+[\#game-container**)
 
 Lorsqu'un statut de terminaison de jeu est détecté, un message
 d'information transparent vient s'apposer sur la grille de jeu afin
 d'informer le joueur de son score et lui proposer de recommencer une
 partie. Le déplacement des tuiles est également désactivé.
 
-Cette boîte de message ([\#message-wrapper]{.bold}) est présente dans le
+Cette boîte de message ([\#message-wrapper**) est présente dans le
 fichier HTML mais reste cachée jusqu'à ce que le script Javascript la
 fasse apparaître.
 
@@ -120,7 +120,7 @@ Ce que j'ai appris :
 -   Interaction avec CSS depuis JS via l'utilisation de "setAttribute"
     ou "element.style.x"
 -   Passage d'éléments du DOM en paramètre (passage de "document" pour
-    instancer [Game]{.bold})
+    instancer **Game**)
 
 </div>
 
@@ -130,8 +130,7 @@ Liens vers le code source :
 <div class="presentation-box">
 
 \
-[Le jeu 2048 est disponible à cette [adresse](https://p1129743.github.io/IFT3225-2048/).]{.bold
-.border}
+**Le jeu 2048 est disponible à cette [adresse](https://p1129743.github.io/IFT3225-2048/).**
 
 \
 Le projet est organisée de la manière suivante:
