@@ -2,9 +2,9 @@ Rapport TP2 - Technologie de l'Internet
 =======================================
 
 <div id="infos">
-
+    
 **Nom:** Jonathan Caspar
-
+    
 **Matricule:** 20059041
 
 **Courriel:** jonathan.caspar@umontreal.ca
@@ -58,10 +58,9 @@ Cela permet ainsi d'éviter d'agréger toutes les tuiles de valeur
 similaire d'un seul coup et de restreindre la fusion de tuiles (au cours
 d'un mouvement) aux tuiles qui n'ont pas encore été fusionnées.
 
-Par exemple, un mouvement vers la gauche de
-![](img/4tiles.png) doit
-donner ![](img/8tiles.png) et
-non ![](img/16tiles.png).
+Par exemple, un mouvement vers la gauche de <img src="img/4tiles.png" width="150px"> doit
+donner <img src="img/8tiles.png" width="150px"> et
+non <img src="img/16tiles.png" width="150px">.
 
 Lorsque les calculs sont terminées, on fait appel à
 **updateView()** pour mettre à jour la vue (i.e.
