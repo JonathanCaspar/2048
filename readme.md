@@ -1,7 +1,3 @@
----
-title: 'Rapport - TP2 - IFT3225'
----
-
 Rapport TP2 - Technologie de l'Internet
 =======================================
 
@@ -54,7 +50,7 @@ autres Tile.
 
 </div>
 
-![2048 game user interface](img/2048-UI.png)
+<p align="center"><img src="img/2048-UI.png" width="50%"></p>
 
 </div>
 
@@ -62,21 +58,21 @@ Cela permet ainsi d'éviter d'agréger toutes les tuiles de valeur
 similaire d'un seul coup et de restreindre la fusion de tuiles (au cours
 d'un mouvement) aux tuiles qui n'ont pas encore été fusionnées.
 
-[Par exemple, un mouvement vers la gauche de
-]{}![\[4\]\[4\]\[4\]\[4\]](img/4tiles.png){.merging-tiles} [doit
-donner]{} ![\[8\]\[8\]\[ \]\[ \]](img/8tiles.png){.merging-tiles} [et
-non]{} ![\[16\]\[ \]\[ \]\[ \]](img/16tiles.png){.merging-tiles}.
+Par exemple, un mouvement vers la gauche de
+![](img/4tiles.png) doit
+donner ![](img/8tiles.png) et
+non ![](img/16tiles.png).
 
 Lorsque les calculs sont terminées, on fait appel à
-[updateView()** pour mettre à jour la vue (i.e.
-[\#game-container**)
+**updateView()** pour mettre à jour la vue (i.e.
+**\#game-container**)
 
 Lorsqu'un statut de terminaison de jeu est détecté, un message
 d'information transparent vient s'apposer sur la grille de jeu afin
 d'informer le joueur de son score et lui proposer de recommencer une
 partie. Le déplacement des tuiles est également désactivé.
 
-Cette boîte de message ([\#message-wrapper**) est présente dans le
+Cette boîte de message (**\#message-wrapper**) est présente dans le
 fichier HTML mais reste cachée jusqu'à ce que le script Javascript la
 fasse apparaître.
 
@@ -86,7 +82,7 @@ fasse apparaître.
 
 Lorsque le joueur réussit à former une tuile 2048 :
 
-![winning message](img/win-message.png)
+<p align="center"><img src="img/win-message.png" width="50%"></p>
 
 </div>
 
@@ -95,7 +91,7 @@ Lorsque le joueur réussit à former une tuile 2048 :
 Lorsque le joueur ne peut plus déplacer de tuiles avant d'atteindre une
 tuile 2048 :
 
-![game-over message](img/game-over-message.png)
+<p align="center"><img src="img/game-over-message.png" width="50%"></p>
 
 </div>
 
