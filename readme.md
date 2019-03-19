@@ -16,8 +16,6 @@ Rapport TP2 - Technologie de l'Internet
 </div>
 
 Choix de représentation :
--------------------------
-
 ------------------------------------------------------------------------
 
 <div class="presentation-box">
@@ -113,8 +111,6 @@ le DOM.
 </div>
 
 Ce que j'ai appris :
---------------------
-
 ------------------------------------------------------------------------
 
 <div class="presentation-box">
@@ -129,14 +125,12 @@ Ce que j'ai appris :
 </div>
 
 Liens vers le code source :
----------------------------
-
 ------------------------------------------------------------------------
 
 <div class="presentation-box">
 
 \
-[Le jeu 2048 est disponible à cette [adresse](2048-game.html).]{.bold
+[Le jeu 2048 est disponible à cette [adresse](https://p1129743.github.io/IFT3225-2048/).]{.bold
 .border}
 
 \
@@ -161,7 +155,7 @@ Le projet est organisée de la manière suivante:
 -   styles/
     -   [2048-game-style.css](styles/2048-game-style.css) (style
         d'affichage de l'application (tuiles, compteur, etc...))
--   [2048-game.html](2048-game.html) (la vue du jeu HTML)
--   [index.html](index.html) (le présent rapport)
+-   [index.html](index.html) (la vue du jeu HTML)
+-   [rapport.html](rapport.html) (le présent rapport)
 
 </div>
