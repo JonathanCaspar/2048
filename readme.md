@@ -9,6 +9,9 @@ Rapport TP2 - 2048 - Technologie de l'Internet
 
 **Courriel:** jonathan.caspar@umontreal.ca
 
+\
+**The game is available [here](https://jonathancaspar.github.io/2048/).**
+
 </div>
 
 Choix de représentation :
